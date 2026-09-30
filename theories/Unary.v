@@ -49,7 +49,7 @@ Qed.
 
 Lemma Cr_fold Q x e : Cstep Q (Cr Q) x e -> Cr Q x e.
 Proof.
-  exact (pfp_gfp (Cstep Q) x e).
+  exact (proj1 (gfp_fp (Cstep Q) x e)).
 Qed.
 
 Lemma Cr_leq Q Q' : Q <= Q' -> Cr Q <= Cr Q'.
@@ -103,9 +103,7 @@ Lemma Cr_bind Q1 Q2 x e1 e2 : smono Q1 ->
   Cr Q2 x (let_ e1 e2).
 Proof.
   intros HQ1. revert x e1.
-  apply (Stage_loeb (fun x => forall e1, Cr Q1 x e1 ->
-    (forall y : Stage, x ⊑ y -> forall v, Q1 y v -> Cr Q2 y (e2 [v..])) ->
-    Cr Q2 x (let_ e1 e2))).
+  refine (Stage_loeb _ _).
   intros x IH e1 He1 K.
   apply Cr_unfold in He1 as [H1 H2].
   destruct (canstep e1) as [[e1' S]|Hi].
@@ -175,7 +173,7 @@ Qed.
 Lemma mu_fold F x w :
   smono (gfp (MuF F)) -> F (gfp (MuF F)) x w -> gfp (MuF F) x (fold w).
 Proof.
-  intros HG Hw. apply (pfp_gfp (MuF F)).
+  intros HG Hw. apply (proj1 (gfp_fp (MuF F) x (fold w))).
   exists (gfp (MuF F)). split; [exact HG|]. split; [reflexivity|].
   exists w. split; [reflexivity|exact Hw].
 Qed.

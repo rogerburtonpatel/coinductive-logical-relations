@@ -49,7 +49,7 @@ Qed.
 
 Lemma Cr2_fold Q x e e' : Cstep2 Q (Cr2 Q) x e e' -> Cr2 Q x e e'.
 Proof.
-  exact (pfp_gfp (Cstep2 Q) x e e').
+  exact (proj1 (gfp_fp (Cstep2 Q) x e e')).
 Qed.
 
 Lemma Cr2_leq Q Q' : Q <= Q' -> Cr2 Q <= Cr2 Q'.
@@ -197,7 +197,7 @@ Lemma mu2_fold F x w w' :
   smono2 (gfp (MuF2 F)) -> F (gfp (MuF2 F)) x w w' ->
   gfp (MuF2 F) x (fold w) (fold w').
 Proof.
-  intros HG Hw. apply (pfp_gfp (MuF2 F)).
+  intros HG Hw. apply (proj1 (gfp_fp (MuF2 F) x (fold w) (fold w'))).
   exists (gfp (MuF2 F)). split; [exact HG|]. split; [reflexivity|].
   exists w, w'. split; [reflexivity|]. split; [reflexivity|exact Hw].
 Qed.

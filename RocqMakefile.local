@@ -1,0 +1,1 @@
+COQEXTRAFLAGS += -R /Users/rogerab/home/research/coinduction/companion-and-tower/theories Coinduction

@@ -96,9 +96,12 @@ Section Linear.
       intros Cc Cx. exact (extreme_split c Cc (chain_extreme c Cc) x Cx).
   Qed.
 
+  (** The final chain is totally ordered.  This is already in the library as
+      [companion.chain.C_linear] (proved differently, via [Cflat]); we derive
+      it from [chain_split] as the flow is slightly nicer that way. *)
   Corollary chain_total x y : C b x -> C b y -> x <= y \/ y <= x.
   Proof.
-      intros Cx Cy. destruct (chain_split x y Cx Cy) as [H|H]; [left; exact H|right].
+    intros Cx Cy. destruct (chain_split x y Cx Cy) as [H|H]; [left; exact H|right].
     etransitivity; [exact H|]. apply chain_pfp, Cx.
   Qed.
 
