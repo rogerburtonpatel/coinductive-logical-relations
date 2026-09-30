@@ -1,0 +1,21 @@
+-arg -w -arg -notation-overridden,-variable-collision,-meta-collision,-require-in-module,-deprecated-since-9.0,-overriding-logical-loadpath
+
+-R plst/rocq plst
+-R /Users/rogerab/home/research/coinduction/companion-and-tower/theories Coinduction
+-R theories CLR
+
+plst/rocq/common/core.v
+plst/rocq/common/fintype.v
+plst/rocq/common/fin_util.v
+plst/rocq/common/relations.v
+plst/rocq/common/renaming.v
+plst/rocq/rec/syntax.v
+plst/rocq/rec/typesyntax.v
+plst/rocq/rec/reduction.v
+plst/rocq/rec/typing.v
+theories/Clock.v
+theories/Clock_scratch.v
+theories/PosTyping.v
+theories/Unary.v
+theories/Binary.v
+theories/Streams.v

@@ -1,0 +1,13 @@
+*.vo
+*.vok
+*.vos
+*.glob
+*.aux
+.*.aux
+*.d
+.lia.cache
+RocqMakefile
+RocqMakefile.conf
+.RocqMakefile.d
+*_scratch.v
+.DS_Store
